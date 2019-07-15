@@ -1,0 +1,2 @@
+type=command
+command=sh dwd_dws.sh

@@ -1,0 +1,2 @@
+type=command
+command=sh create_table_full.sh

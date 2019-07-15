@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="hz1803_test1">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\千锋dg3\hapdoop\hz1803_test1\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>

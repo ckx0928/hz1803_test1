@@ -13,8 +13,9 @@ import org.slf4j.LoggerFactory
   */
 object DWD_DWS {
   def main(args: Array[String]): Unit = {
-    System.setProperty("hadoop.home.dir", "F:\\soft\\hadoop-common-2.2.0-bin-master.zip\\hadoop-common-2.2.0-bin-master")
+    //System.setProperty("hadoop.home.dir", "F:\\soft\\hadoop-common-2.2.0-bin-master.zip\\hadoop-common-2.2.0-bin-master")
     val conf = new SparkConf().setAppName(Constan.SPARK_APP_NAME_USER).setMaster(Constan.SPARK_LOACL)
+    conf.set("spark.testing.memory", "2147480000")
     val sc = new SparkContext(conf)
     val hiveContext = new HiveContext(sc)
     // 加载相应的语句
@@ -35,7 +36,7 @@ object DWD_DWS {
       // 存入MySQL
      // df.write.mode("append").jdbc(jdbcUrl,mysqlTableName,jdbcProp)
       // 存入Hive
-      df.write.mode(SaveMode.Append).insertInto(hiveTableName)
+      //df.write.mode(SaveMode.Append).insertInto(hiveTableName)
     }
   }
 }

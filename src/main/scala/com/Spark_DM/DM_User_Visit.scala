@@ -13,8 +13,9 @@ import org.slf4j.LoggerFactory
   */
 object DM_User_Visit {
   def main(args: Array[String]): Unit = {
-    System.setProperty("hadoop.home.dir", "D:\\Huohu\\下载\\hadoop-common-2.2.0-bin-master")
+    //System.setProperty("hadoop.home.dir", "D:\\Huohu\\下载\\hadoop-common-2.2.0-bin-master")
     val conf = new SparkConf().setAppName(Constan.SPARK_APP_NAME_USER).setMaster(Constan.SPARK_LOACL)
+    conf.set("spark.testing.memory", "8147480000")
     val sc = new SparkContext(conf)
     val hiveContext = new HiveContext(sc)
     // 加载相应的语句
@@ -33,7 +34,7 @@ object DM_User_Visit {
       val jdbcProp = JDBCUtils.getJdbcProp()._1
       val jdbcUrl = JDBCUtils.getJdbcProp()._2
       // 存入MySQL
-      df.coalesce(1).write.mode("append").jdbc(jdbcUrl,mysqlTableName,jdbcProp)
+      df.write.mode("append").jdbc(jdbcUrl,mysqlTableName,jdbcProp)
       // 存入Hive
       //df.coalesce(1).write.mode(SaveMode.Append).insertInto(hiveTableName)
     }
